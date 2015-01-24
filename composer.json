@@ -1,0 +1,34 @@
+{
+    "name": "AppService",
+    "description": "Api RESTFul para consumo via web",
+    "authors": [
+        {
+            "name": "Leonir Alves",
+            "email": "leonir.ad@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "slim/slim": "2.*",
+        "slim/extras": "*",
+        "slim/middleware": "*",
+        "illuminate/database": "4.2.16",
+        "monolog/monolog": ">=1.6.0",
+        "flynsarmy/slim-monolog": "1.0.0",
+        "league/oauth2-server": ">=4.1.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "API": "lib/",
+            "API\\Core\\Controller": "lib/API/Core/Controller",
+            "API\\Core\\Model": "lib/API/Core/Model",
+            "API\\Core\\Dao": "lib/API/Core/Dao",
+            "API\\Storage": "lib/API/Storage",
+            "API\\Auth": "lib/API/Auth"
+        },
+        "files": [
+        ],
+        "classmap": [
+        ]
+    }
+}
