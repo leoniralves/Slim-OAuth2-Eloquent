@@ -1,6 +1,6 @@
 # Slim-OAuth2-Eloquent
 
-Este repositório contém código para desenvolvedores que precisam iniciar uma aplicação utilizando os conceitos RESTFul com [Slim Framework](http://www.slimframework.com/), porém, não querem passar pala fase de estruturação e configuração de ferramentas como [Eloquent ORM](http://laravel.com/docs/4.2/eloquent#), autenticação utilizando [OAuth](http://oauth.net/) e [Slim-Monolog](https://github.com/Flynsarmy/Slim-Monolog). *Slim-OAuth2-Eloquent* já contém todas estas ferramentas configuradas e prontas para uso.
+Este repositório contém código para desenvolvedores que precisam iniciar uma aplicação utilizando os conceitos RESTFul com [Slim Framework](http://www.slimframework.com/), porém, não querem passar pala fase de estruturação e configuração de ferramentas como [Eloquent ORM](http://laravel.com/docs/4.2/eloquent#), [OAuth](http://oauth.net/) e [Slim-Monolog](https://github.com/Flynsarmy/Slim-Monolog). *Slim-OAuth2-Eloquent* já contém todas estas ferramentas configuradas e prontas para uso.
 
 ## Requerimentos
 PHP >= 5.4.0
