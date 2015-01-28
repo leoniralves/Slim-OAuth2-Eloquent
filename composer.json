@@ -1,6 +1,6 @@
 {
-    "name": "AppService",
-    "description": "Api RESTFul para consumo via web",
+    "name": "Slim-OAuth2-Eloquent",
+    "description": "Este repositório contém código para desenvolvedores que precisam iniciar uma aplicação utilizando os conceitos RESTFul com Slim Framework, porém, não querem passar pala fase de estruturação e configuração de ferramentas como Eloquent ORM, OAuth e Slim-Monolog. Slim-OAuth2-Eloquent já contém todas estas ferramentas configuradas e prontas para uso.",
     "authors": [
         {
             "name": "Leonir Alves",
@@ -19,12 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "API": "lib/",
-            "API\\Core\\Controller": "lib/API/Core/Controller",
-            "API\\Core\\Model": "lib/API/Core/Model",
-            "API\\Core\\Dao": "lib/API/Core/Dao",
-            "API\\Storage": "lib/API/Storage",
-            "API\\Auth": "lib/API/Auth"
+            "API": "lib/"
         },
         "files": [
         ],

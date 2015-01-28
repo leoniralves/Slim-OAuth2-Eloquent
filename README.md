@@ -58,4 +58,8 @@ $ curl -X POST -F "grant_type=refresh_token" -F "client_id=testclient" -F "clien
 Bugs, features, sugestões ou dúvidas utilizar [GitHub](https://github.com/leoniralves/Slim-OAuth2-Eloquent/issues)
 
 ## Autor
+<<<<<<< HEAD
 Leonir Alves - https://twitter.com/leo_alvesjf
+=======
+Leonir Alves - https://twitter.com/leonir_ad
+>>>>>>> 5a42a3d... Refactor dos namespaces carregados na PSR-0;

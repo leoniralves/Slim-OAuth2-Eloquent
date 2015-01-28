@@ -60,3 +60,5 @@ composer.lock
 ### API ###
 share/logs
 
+### SQLite ###
+share/init/oauth2.sqlite3
