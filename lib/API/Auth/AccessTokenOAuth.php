@@ -22,6 +22,35 @@ class AccessTokenOAuth {
 
         // OAuth
         $this->server = new \League\OAuth2\Server\AuthorizationServer();
+
+
+        ############################################
+        /**
+         * Workaround
+         *
+         * Até o momento o package oauth2-server (https://github.com/thephpleague/oauth2-server)
+         * não oferece suporte a requisições com Content-Type application/json, pois sua forma de utilizar
+         * as URIs seguem a RFC3986 (http://www.ietf.org/rfc/rfc3986.txt). Esta forma esta atrelado a
+         * \Symfony\Component\HttpFoundation\ParameterBag (http://api.symfony.com/2.0/Symfony/Component/HttpFoundation/ParameterBag.html)
+         *
+         * Por esse motivo, esse trecho precisou ser inserido para recuperar dados em Json vindos pelo
+         * body do request e inseri-los no objeto request(). Este por sua vez irá entender os dados como
+         * se os mesmos tivessem sido enviados no formato application/x-www-form-urlencoded.
+         *
+         * Assim quem a equipe responsável pelo oauth2-server atualizarem para uma versão
+         * com suporte à requests feitos no formato Json esta API será também atualizada nesse quesito
+         *
+         * OBS.:
+         * Essa medida foi tomada a fim de não ferir os conceitos de boas praticas para criação de API RESTFul
+         */
+        $body = $this->app->request()->getBody();
+        $newRequest = $this->server->getRequest();
+
+        foreach($body as $key => $value) {
+            $newRequest->request->set($key,$value);
+        }
+        ############################################
+
         $this->server->setSessionStorage(new Storage\SessionStorage());
         $this->server->setAccessTokenStorage(new Storage\AccessTokenStorage());
         $this->server->setRefreshTokenStorage(new Storage\RefreshTokenStorage());

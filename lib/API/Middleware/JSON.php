@@ -22,8 +22,7 @@ class JSON extends \Slim\Middleware
             $mediaType = $this->app->request->getMediaType();
 
             if (in_array($method, array('post', 'put', 'patch')) && '' !== $this->app->request()->getBody()) {
-                // http://www.ietf.org/rfc/rfc3986.txt
-                if (empty($mediaType) || $mediaType !== 'application/x-www-form-urlencoded') {
+                if (empty($mediaType) || $mediaType !== 'application/json') {
                     $this->app->halt(415);
                 }
             }

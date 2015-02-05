@@ -30,8 +30,7 @@ class AuthenticationTokenOAuth extends \Slim\Middleware {
      */
     public function call()
     {
-        $res = $this->app->request->params();
-        if(empty($res["grant_type"])) {
+        if($this->app->request->get("access_token")) {
             $this->verifyToken();
         }
         else {
