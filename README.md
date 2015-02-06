@@ -29,16 +29,27 @@ password: test
 
 * Solicitar um token para acesso - `POST`
 ```sh
-$ curl -i POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=password&client_id=testclient&client_secret=secret&username=usertest&password=test' http://localhost/Slim-OAuth2-Eloquent/public/api/v1/oauth/token
+$ curl -i POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+    "grant_type": "password",
+    "client_id": "testclient",
+    "client_secret": "secret",
+    "username": "usertest",
+    "password": "test"
+  }' http://localhost/Slim-OAuth2-Eloquent/public/api/v1/oauth/token
 ```
 
 * Utilizar token de acesso (Access token) - `GET`
 ```sh
-$ curl -i GET http://localhost/Slim-OAuth2-Eloquent/public/api/v1/users?access_token=código retornado na solicitação de token de acesso
+$ curl -i GET -H "Content-Type: application/json" -H "Cache-Control: no-cache" http://localhost/Slim-OAuth2-Eloquent/public/api/v1/users?access_token=código retornado na solicitação de token de acesso
 ```
 * Atualizar token (Refresh token) - `POST`
 ```sh
-$ curl -i POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=refresh_token&client_id=testclient&client_secret=secret&refresh_token=refresh_token=código retornado no parametro refresh_token' http://localhost/Slim-OAuth2-Eloquent/public/api/v1/oauth/token
+$ curl -i POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+	  "grant_type": "refresh_token",
+	  "client_id": "testclient",
+	  "client_secret": "secret",
+	  "refresh_token": "código retornado no parametro refresh_token"
+  }' http://localhost/Slim-OAuth2-Eloquent/public/api/v1/oauth/token
 ```
 ## Links
 * [Slim Framework](http://www.slimframework.com/)
