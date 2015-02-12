@@ -25,7 +25,7 @@ class Users extends Core {
     }
 
     public function insert() {
-        $body = $this->app->request->params();
+        $body = $this->app->request->getBody();
 
         $this->usersModel->setUsername($body["username"]);
         $this->usersModel->setName($body["name"]);

@@ -2,24 +2,9 @@
 
 require_once dirname(__FILE__) . '/../bootstrap.php';
 
-$app->group('/api', function() use ($app, $log) {
-    $app->get('/', function() {
-        echo "API";
-    });
-    // API Métodos
-    $app->group('/v1', function() use ($app, $log) {
-        // Users
-        $app->group('/users', function() use ($app, $log) {
-            $app->get('/', '\API\Core\Controller\Users:select');
-            $app->post('/', '\API\Core\Controller\Users:insert');
-
-        });
-
-        // Authorization App
-        $app->group('/oauth', function() use ($app, $log) {
-            $app->post('/token', '\API\Auth\AccessTokenOAuth:AccessToken');
-        });
-    });
+// Authorization App
+$app->group('/oauth', function() use ($app, $log) {
+    $app->post('/token', '\API\Auth\AccessTokenOAuth:AccessToken');
 });
 
 // Public home page
@@ -113,4 +98,5 @@ $app->notFound(function () use ($app) {
     }
 });
 
+require_once('routes.php');
 $app->run();

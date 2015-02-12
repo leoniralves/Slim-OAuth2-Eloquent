@@ -30,20 +30,14 @@ class AuthenticationTokenOAuth extends \Slim\Middleware {
      */
     public function call()
     {
-        if($this->app->request->get("access_token")) {
-            $this->verifyToken();
-        }
-        else {
-            $this->next->call();
-        }
-    }
-
-    public function verifyToken() {
-        $res = $this->app->response();
         try {
-            $this->server->isValidRequest(false);
+            $isRequeriNewToken = (bool) preg_match('/\/oauth\/token$/', $this->app->request->getPath());
+            if (!$isRequeriNewToken) {
+                $this->server->isValidRequest(false);
+            }
             $this->next->call();
         } catch(\League\OAuth2\Server\Exception\OAuthException $e) {
+            $res = $this->app->response();
             $res->status(401);
             $res->write(
                 json_encode([
@@ -56,7 +50,7 @@ class AuthenticationTokenOAuth extends \Slim\Middleware {
             $res->headers->set('Content-Type', 'application/json');
             return true;
         } catch(\Exception $e) {
-            echo 't';
+            echo 'Slim Exception';
         }
     }
 
