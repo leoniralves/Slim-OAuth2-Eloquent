@@ -22,35 +22,43 @@ $ php share/init/init.php
 ## Usar
 
 O banco de dados que foi criando, dentro do subdiretório *share/init*, contém um usuário de teste. Este será usando para ilustrar o uso da API.
-````
+```
 username: usertest
 password: test
 ```
 
-* Solicitar um token para acesso - `POST`
-```sh
-$ curl -i -X 'POST' -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
-    "grant_type": "password",
-    "client_id": "testclient",
-    "client_secret": "secret",
-    "username": "usertest",
-    "password": "test"
-  }' http://localhost/Slim-OAuth2-Eloquent/public/api/v1/oauth/token
+### Solicitar um token para acesso e atualizar token (Refresh token)
+
+Para obter um token de acesso ou atualizar o token existente, a solicitão deve ser feita utilizando o método `POST` e `Content-Type: application/x-www-form-urlencoded`. Os dados nescessários são:
+  
+##### Solicitação
+```
+grant_type: password
+client_id: testclient
+client_secret: secret
+username: usertest
+password: test
+```
+  
+##### Atualização
+```
+grant_type: password
+client_id: testclient
+client_secret: secret
+username: usertest
+password: test
 ```
 
-* Utilizar token de acesso (Access token) - `GET`
-```sh
-$ curl -i -X 'GET' -H "Content-Type: application/json" -H "Cache-Control: no-cache" http://localhost/Slim-OAuth2-Eloquent/public/api/v1/users?access_token=código retornado na solicitação de token de acesso
+### Acessar dados com token de acesso obtido na solitação (Access token)
+
+O acesso aos dados da API acontece dentro dos padrões *RESTful* (`GET`, `POST`, `PUT`, `DELETE`). Ao utilizar qualquer um destes métodos é obrigatório o envio do 'token' obtido na solictação. O mesmo precisa ser enviado no 'header' da requisição 'http' através do parametro 'Authorization' e este deve ser da seguinte foma:
+
 ```
-* Atualizar token (Refresh token) - `POST`
-```sh
-$ curl -i -X 'POST' -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
-	  "grant_type": "refresh_token",
-	  "client_id": "testclient",
-	  "client_secret": "secret",
-	  "refresh_token": "código retornado no parametro refresh_token"
-  }' http://localhost/Slim-OAuth2-Eloquent/public/api/v1/oauth/token
+Authorization: Bearer d7TSwi1dXK3F1sN78tTEPDGOmD9c2oWmRFu6hrj6
 ```
+
+*OBS.: O hash utilizado como token é meramente ilustrativo, devendo ser substituído pelo obtido na solicitação/atualização de token*
+
 ## Links
 * [Slim Framework](http://www.slimframework.com/)
 * [Eloquent ORM](http://laravel.com/docs/4.2/eloquent#)
@@ -64,6 +72,7 @@ $ curl -i -X 'POST' -H "Content-Type: application/json" -H "Cache-Control: no-ca
 ## Referências utilizadas
 * [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
 * [An Introduction to OAuth 2](http://www.slideshare.net/aaronpk/an-introduction-to-oauth-2)
+* [RFC3986](http://www.ietf.org/rfc/rfc3986.txt)
 
 ## Suporte
 Bugs, features, sugestões ou dúvidas utilizar [GitHub](https://github.com/leoniralves/Slim-OAuth2-Eloquent/issues)
