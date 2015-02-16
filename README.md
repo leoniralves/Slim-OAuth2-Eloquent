@@ -21,11 +21,18 @@ $ php share/init/init.php
 
 ## Usar
 
+### Banco de dados
+
 O banco de dados que foi criando, dentro do subdiretório *share/init*, contém um usuário de teste. Este será usando para ilustrar o uso da API.
 ```
 username: usertest
 password: test
 ```
+
+### Pasta *Core* e arquivo *routes.php*
+
+A pasta `Core` e o arquivo `routes.php` é onde deve estar todo o fluxo do projeto. Nestes locais ficarão os código que não devem ser atualizados por novas versões do projeto `Slim-OAuth2-Eloquent`.
+Para não haver problemas é muito importante que o desenvolvedor inclua estes no `.gitignore` de seu projeto.
 
 ### Solicitar um token para acesso e atualizar token (Refresh token)
 
