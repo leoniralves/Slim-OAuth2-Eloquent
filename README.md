@@ -28,6 +28,10 @@ O banco de dados que foi criando, dentro do subdiretório *share/init*, contém 
 username: usertest
 password: test
 ```
+Obs.: O banco de dados possui o nome de oauth2.sqlite3. Este por sua vez, está sem permissão de escrita/leitura e com isso será gerado uma exceção. Para tornar o banco utilizável é preciso executar o comando: 
+```sh
+$ chmod 777 oauth2.sqlite3
+```
 
 ### Pasta *Core* e arquivo *routes.php*
 
@@ -46,14 +50,18 @@ client_secret: secret
 username: usertest
 password: test
 ```
-  
+```sh
+$ curl -i POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=password&client_id=testclient&client_secret=secret&username=usertest&password=test' http://localhost/Slim-OAuth2-Eloquent/public/oauth/token
+```
 ##### Atualização
 ```
-grant_type: password
+grant_type: refresh_token
 client_id: testclient
 client_secret: secret
-username: usertest
-password: test
+refresh_token: refresh_token=código retornado no parametro refresh_token
+```
+```sh
+$ curl -i POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=refresh_token&client_id=testclient&client_secret=secret&refresh_token=refresh_token=código retornado no parametro refresh_token' http://localhost/Slim-OAuth2-Eloquent/public/oauth/token
 ```
 
 ### Acessar dados com token de acesso obtido na solitação (Access token)
@@ -63,8 +71,11 @@ O acesso aos dados da API acontece dentro dos padrões *RESTful* (`GET`, `POST`,
 ```
 Authorization: Bearer d7TSwi1dXK3F1sN78tTEPDGOmD9c2oWmRFu6hrj6
 ```
+```sh
+$ curl -i GET http://localhost/Slim-OAuth2-Eloquent/public/users?access_token=código retornado na solicitação de token de acesso
+```
 
-*OBS.: O hash utilizado como token é meramente ilustrativo, devendo ser substituído pelo obtido na solicitação/atualização de token*
+*OBS.: O hash utilizado como token é __meramente ilustrativo__, devendo ser substituído pelo obtido na solicitação/atualização de token*
 
 ## Links
 * [Slim Framework](http://www.slimframework.com/)
