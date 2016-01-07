@@ -95,5 +95,8 @@ $ curl -i GET http://localhost/Slim-OAuth2-Eloquent/public/users?access_token=c�
 ## Suporte
 Bugs, features, sugestões ou dúvidas utilizar [GitHub](https://github.com/leoniralves/Slim-OAuth2-Eloquent/issues)
 
+## Licença
+Este projeto é licenciado sob os termos da licença MIT. Veja o arquivo de LICENSE.
+
 ## Autor
 Leonir Alves - https://twitter.com/leonir_ad
