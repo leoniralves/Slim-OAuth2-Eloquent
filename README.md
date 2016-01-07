@@ -33,14 +33,14 @@ Obs.: O banco de dados possui o nome de oauth2.sqlite3. Este por sua vez, está 
 $ chmod 777 oauth2.sqlite3
 ```
 
-### Pasta *Core* e arquivo *routes.php*
+### Pasta *public*
 
-A pasta `Core` e o arquivo `routes.php` é onde deve estar todo o fluxo do projeto. Nestes locais ficarão os código que não devem ser atualizados por novas versões do projeto `Slim-OAuth2-Eloquent`.
-Para não haver problemas é muito importante que o desenvolvedor inclua estes no `.gitignore` de seu projeto.
+A pasta `public` é onde deve estar todo o fluxo do projeto. Neste local ficarão os códigos que não devem ser atualizados por novas versões do projeto `Slim-OAuth2-Eloquent`.
+Para não haver problemas é muito importante que o desenvolvedor inclua este diretório no `.gitignore` de seu projeto.
 
 ### Solicitar um token para acesso e atualizar token (Refresh token)
 
-Para obter um token de acesso ou atualizar o token existente, a solicitão deve ser feita utilizando o método `POST` e `Content-Type: application/x-www-form-urlencoded`. Os dados nescessários são:
+Para obter um token de acesso ou atualizar o existente, a solicitação deve ser feita utilizando o método `POST` e `Content-Type: application/x-www-form-urlencoded`. Os dados necessários são:
   
 ##### Solicitação
 ```
@@ -64,9 +64,9 @@ refresh_token: refresh_token=código retornado no parametro refresh_token
 $ curl -i POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=refresh_token&client_id=testclient&client_secret=secret&refresh_token=refresh_token=código retornado no parametro refresh_token' http://localhost/Slim-OAuth2-Eloquent/public/oauth/token
 ```
 
-### Acessar dados com token de acesso obtido na solitação (Access token)
+### Acessar dados com token de acesso obtido na solicitação (Access token)
 
-O acesso aos dados da API acontece dentro dos padrões *RESTful* (`GET`, `POST`, `PUT`, `DELETE`). Ao utilizar qualquer um destes métodos é obrigatório o envio do 'token' obtido na solictação. O mesmo precisa ser enviado no 'header' da requisição 'http' através do parametro 'Authorization' e este deve ser da seguinte foma:
+O acesso aos dados da API acontece dentro dos padrões *RESTful* (`GET`, `POST`, `PUT`, `DELETE`). Ao utilizar qualquer um destes métodos é obrigatório o envio do 'token' obtido na solicitação. O mesmo precisa ser enviado no 'header' da requisição 'http' através do parametro 'Authorization' e este deve ser da seguinte foma:
 
 ```
 Authorization: Bearer d7TSwi1dXK3F1sN78tTEPDGOmD9c2oWmRFu6hrj6
