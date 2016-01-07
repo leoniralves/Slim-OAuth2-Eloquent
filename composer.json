@@ -2,7 +2,7 @@
     "name": "leoniralves/slim-oauth2-eloquent",
     "description": "Este repositório contém código para desenvolvedores que precisam iniciar uma aplicação utilizando os conceitos RESTFul com Slim Framework, porém, não querem passar pala fase de estruturação e configuração de ferramentas como Eloquent ORM, OAuth e Slim-Monolog. Slim-OAuth2-Eloquent já contém todas estas ferramentas configuradas e prontas para uso.",
     "type": "project",
-	"license": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Leonir Alves",
