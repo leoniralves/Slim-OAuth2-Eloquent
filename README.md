@@ -72,7 +72,7 @@ O acesso aos dados da API acontece dentro dos padrões *RESTful* (`GET`, `POST`,
 Authorization: Bearer d7TSwi1dXK3F1sN78tTEPDGOmD9c2oWmRFu6hrj6
 ```
 ```sh
-$ curl -i GET http://localhost/Slim-OAuth2-Eloquent/public/users?access_token=código retornado na solicitação de token de acesso
+$ curl -i GET http://localhost/Slim-OAuth2-Eloquent/public/api/v1/users
 ```
 
 *OBS.: O hash utilizado como token é __meramente ilustrativo__, devendo ser substituído pelo obtido na solicitação/atualização de token*
